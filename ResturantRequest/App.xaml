@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ResturantRequest.App">
+    <Application.Resources>
+      
+               <Color x:Key="AppColor"> #d83737</Color>
+            <Color x:Key="Dashboardblue">#012875</Color>
+    </Application.Resources>
+</Application>

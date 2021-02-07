@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Source.Presentation.Pages.DashboardPage">
+    <ContentPage.Content>
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <StackLayout>
+       <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Vertical">
+        <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+         <StackLayout.Margin>
+           <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="10,50,10,0" />
+                <On Platform="Android" Value="5,10,5,0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+      </StackLayout.Margin>
+            <StackLayout Margin="0,0,0,10" Orientation="Horizontal"
+                         VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+            <Image Source="Logo"></Image>
+            </StackLayout>
+
+            <StackLayout Padding="10">
+                <Frame Padding="1" CornerRadius="5">
+            <customrenders:CustomSearchBar Placeholder="Looking for something?" PlaceholderColor="#F5C5B7" TextColor="{StaticResource AppColor}"></customrenders:CustomSearchBar>
+                </Frame>
+            </StackLayout>
+
+
+                   <StackLayout  Margin="0,0,0,0">
+       <Frame Padding="0" BackgroundColor="White"
+              IsClippedToBounds="True"
+              CornerRadius="0"
+                          HasShadow="False"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+          <StackLayout BackgroundColor="Transparent" Padding="5">
+          <ListView  VerticalOptions="FillAndExpand" BackgroundColor="White"
+                     IsEnabled="True" x:Name="listview" 
+                     SeparatorVisibility="None" CachingStrategy="RecycleElement"
+
+                     ItemsSource="{Binding ListofProducts}"
+                     HasUnevenRows="True" VerticalScrollBarVisibility="Never">
+
+           <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+           <StackLayout Padding="0" Margin="1,1,1,1" BackgroundColor="White">
+       
+             <Frame HasShadow="True"
+               Padding="10,10,10,10" 
+              BackgroundColor="WhiteSmoke"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand">
+              
+               <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                   
+                      <StackLayout Orientation="Vertical"
+                                      VerticalOptions="Start" 
+                                      HorizontalOptions="FillAndExpand">
+                              <StackLayout Orientation="Vertical" VerticalOptions="Start" 
+                                      HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding ProductName}" TextColor="Black" VerticalTextAlignment="Start"
+                                       x:Name="notificationSubject" FontSize="Body" FontAttributes="Bold">
+                                
+                                </Label>
+                                <Label Text="{Binding NotificationDateTime}"
+                                       VerticalTextAlignment="Start" HeightRequest="20"
+                                       x:Name="notifyBody" FontSize="Small" >
+                                 <Label.Triggers>
+                                 <DataTrigger Binding="{Binding NotificationIsRead}"
+                                 TargetType="Label"
+                                 Value="True">
+                        <Setter Property="TextColor" Value="Black"/>
+                    </DataTrigger>
+                                    
+                    <DataTrigger Binding="{Binding NotificationIsRead}"
+                                 TargetType="Label"
+                                 Value="False">
+                        <Setter Property="TextColor" Value="White"/>
+                    </DataTrigger>
+                           </Label.Triggers>
+                          </Label>
+                     </StackLayout>
+               </StackLayout>
+
+                  
+                     </StackLayout>
+    
+
+     
+                      </Frame>
+                    </StackLayout>
+                    </ViewCell>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+          </ListView>
+         </StackLayout>
+       </Frame>
+      </StackLayout>
+
+       <!--<StackLayout   BackgroundColor="Yellow" >
+
+       <Frame Padding="33"  BackgroundColor="Gold" 
+              IsClippedToBounds="True"
+              CornerRadius="0"
+                          HasShadow="True"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+     
+       
+            <StackLayout>
+                  <ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                     IsEnabled="True" x:Name="listview"  BackgroundColor="White" SelectionMode="Single"
+                     SeparatorVisibility="None" CachingStrategy="RecycleElement" 
+                     ItemsSource="{Binding ListofProducts}"
+                     HasUnevenRows="True" VerticalScrollBarVisibility="Never">
+               <ListView.ItemTemplate>
+               <DataTemplate>
+               <ViewCell>
+
+               <StackLayout BackgroundColor="Transparent" Padding="20">
+               <Frame HasShadow="False" BackgroundColor="Gray"
+               Padding="10" CornerRadius="5"
+               Margin="0,0,0,0"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand">
+                    
+               <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" 
+                                      HorizontalOptions="FillAndExpand">
+                   
+               <Image Source="{Binding image}" HeightRequest="100"></Image>
+               <Label Text="{Binding ProductName}" TextColor="Black" VerticalTextAlignment="Start"
+                         FontSize="Body" />
+
+                  </StackLayout>
+                  </Frame>
+                  </StackLayout>
+                 </ViewCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+             </ListView>
+                
+                </StackLayout>
+              </Frame>
+            </StackLayout>-->
+
+
+
+           </StackLayout>
+           </StackLayout>
+     
+       </Grid>
+
+        </StackLayout>
+        </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
