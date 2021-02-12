@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Source.Data.PageViewModel;
 using Xamarin.Forms;
 
 namespace Source.Presentation.Pages.Category
@@ -10,6 +10,9 @@ namespace Source.Presentation.Pages.Category
         public ListCategoryPage()
         {
             InitializeComponent();
+            CategoryPageModel category = new CategoryPageModel();
+            BindingContext = category;
+    
         }
     }
 }

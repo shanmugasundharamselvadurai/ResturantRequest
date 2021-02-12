@@ -18,10 +18,29 @@ namespace Source.Presentation.Pages.BottomTab
         {
             InitializeComponent();
 
-            CustomNavigationPage.SetHasBackButton(this, false);
-            CustomNavigationPage.SetHasNavigationBar(this, true);
+            this.CurrentPageChanged += PageChanged;
+
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             On<Android>().SetIsSwipePagingEnabled(false);
         }
+
+        void PageChanged(object sender, EventArgs args)
+        {
+            var tabbedPage = (BottomTabbedPage)sender;
+            Title = tabbedPage.CurrentPage.Title;
+
+            if (Title.ToLower().Equals("product"))
+            {
+                MessagingCenter.Send<BottomTabbedPage>(this, "product");
+
+            
+            }
+            else if (Title.ToLower().Equals("category"))
+            {
+                MessagingCenter.Send<BottomTabbedPage>(this, "category");
+            }
+  
+        }
+
     }
 }

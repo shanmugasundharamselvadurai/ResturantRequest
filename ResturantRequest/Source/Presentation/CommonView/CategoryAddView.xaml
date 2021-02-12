@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rg:PopupPage  xmlns:rg="http://rotorgames.com"
+               xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             x:Class="Source.Presentation.CommonView.CategoryAddView"
+               Visual="Material" 
+              BackgroundClicked="PopupPage_BackgroundClicked">
+
+    <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Margin="25,10,25,10" Padding="0"
+          BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+         <Frame Padding="0" HasShadow="False" CornerRadius="12"
+                   BackgroundColor="WhiteSmoke"  VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+
+        <StackLayout Padding="10" Margin="5,5,5,5">
+          <Label Text="Category" FontSize="Medium" TextColor="Black" Margin="5,0,0,0"  VerticalOptions="EndAndExpand"
+                          HorizontalOptions="FillAndExpand"></Label>
+
+          <customrenders:CustomEntry Text="{Binding categoryText}"  HeightRequest="45" PlaceholderColor="LightGray" TextColor="Black" BackgroundColor="White" Placeholder="Enter category"></customrenders:CustomEntry>
+
+          <Frame Padding="0" HasShadow="False" CornerRadius="5"
+                   BackgroundColor="{StaticResource AppColor}" Margin="50,0,50,0" VerticalOptions="EndAndExpand"
+                          HorizontalOptions="FillAndExpand">
+          <StackLayout >
+          <Button Text="Add" TextColor="White"
+                  BackgroundColor="Transparent" Command="{Binding AddCommand}"></Button>
+          </StackLayout>
+          </Frame>
+         </StackLayout>
+         </Frame>
+    </Grid>
+</rg:PopupPage>

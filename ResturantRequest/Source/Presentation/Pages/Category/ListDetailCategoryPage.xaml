@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             x:Class="Source.Presentation.Pages.Category.ListDetailCategoryPage"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+   <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+          <StackLayout Orientation="Horizontal" 
+                         VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                     <StackLayout.Padding>
+           <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="10,40,10,0" />
+                <On Platform="Android" Value="10,10,10,0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+     </StackLayout.Padding>
+            
+                <Image Source="close" HeightRequest="30" WidthRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
+                      <Image.GestureRecognizers>
+                   <TapGestureRecognizer Command="{Binding backbuttonAction }"/>
+                 </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+    <StackLayout>
+       <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Vertical">
+        <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+         <StackLayout.Margin>
+           <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="10,50,10,0" />
+                <On Platform="Android" Value="5,0,5,0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+      </StackLayout.Margin>
+
+         <StackLayout BackgroundColor="Transparent" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
+                      Padding="5" >
+
+             <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent"
+                     IsEnabled="True" x:Name="listview" 
+                     SeparatorVisibility="None" CachingStrategy="RecycleElement"
+                     ItemsSource="{Binding SelectedCategory}" SelectedItem="{Binding selectedItem,Mode=TwoWay}" 
+                     HasUnevenRows="True" VerticalScrollBarVisibility="Never">
+
+           <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+           <StackLayout Padding="0" Margin="1,5,1,5" BackgroundColor="White">
+       
+             <Frame HasShadow="True" 
+              Padding="10,10,10,10" 
+              BackgroundColor="White"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand">
+
+               <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                   
+                      <StackLayout Orientation="Horizontal"
+                                      VerticalOptions="FillAndExpand" 
+                                      HorizontalOptions="Start">
+                
+                             <StackLayout Orientation="Vertical">
+                                      <Label Text="{Binding ProductName}"
+                                             TextColor="Black" VerticalTextAlignment="Start"
+                                        FontSize="Body" />
+                            </StackLayout>
+                          </StackLayout>
+                     </StackLayout>
+                      </Frame>
+                    </StackLayout>
+                    </ViewCell>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+          </ListView>
+
+         </StackLayout>
+
+           </StackLayout>
+           </StackLayout>
+           </Grid>
+          </StackLayout>
+          </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

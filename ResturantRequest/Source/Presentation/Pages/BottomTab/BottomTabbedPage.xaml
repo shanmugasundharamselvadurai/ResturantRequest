@@ -4,13 +4,15 @@
             BackgroundColor="White"
             BarBackgroundColor="WhiteSmoke"
             UnselectedTabColor="Gray"
+            NavigationPage.HasNavigationBar="False"
+            NavigationPage.HasBackButton="False"
             xmlns:Page1="clr-namespace:Source.Presentation.Pages.Category"
             xmlns:Page2="clr-namespace:Source.Presentation.Pages.Product"
             SelectedTabColor="{StaticResource AppColor}"
 
      x:Class="Source.Presentation.Pages.BottomTab.BottomTabbedPage">
     <!--Pages can be added as references or inline-->
-    <Page:DashboardPage Title="Home" />
-    <Page1:ListCategoryPage Title="Category" />
     <Page2:ProductListPage Title="Product" />
+    <Page1:ListCategoryPage Title="Category" />
+   
 </TabbedPage>

@@ -24,5 +24,6 @@ namespace Source.Presentation.CommonView
             if (!IgnoreLayoutChange)
                 base.OnSizeAllocated(width, height);
         }
+    
     }
 }

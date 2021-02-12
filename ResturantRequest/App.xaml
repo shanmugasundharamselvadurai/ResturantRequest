@@ -5,6 +5,5 @@
     <Application.Resources>
       
                <Color x:Key="AppColor"> #d83737</Color>
-            <Color x:Key="Dashboardblue">#012875</Color>
     </Application.Resources>
 </Application>

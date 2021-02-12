@@ -55,12 +55,17 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>3.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renders\CustomNavigationRenderer.cs" />
     <Compile Include="Renders\BorderRenderer.cs" />
     <Compile Include="Renders\ButtonCustomButton.cs" />
     <Compile Include="Renders\CircleViewRenderer.cs" />
@@ -71,6 +76,8 @@
     <Compile Include="Renders\EntryCustomEntry.cs" />
     <Compile Include="Renders\EntryCustomRender.cs" />
     <Compile Include="Renders\PickerCustomRender.cs" />
+    <Compile Include="Dependency\SQliteDroid.cs" />
+    <Compile Include="Renders\CustomNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -98,16 +105,36 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\close.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\plate2.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\plate1.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\arrow.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renders\" />
+    <Folder Include="Dependency\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ResturantRequest\ResturantRequest.csproj">
       <Project>{34491A3E-881D-4252-893D-058CBE5DFE33}</Project>
       <Name>ResturantRequest</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\categorias.json" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

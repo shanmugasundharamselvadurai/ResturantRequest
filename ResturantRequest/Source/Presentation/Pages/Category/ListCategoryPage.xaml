@@ -1,8 +1,137 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="Red"
+             xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasNavigationBar="False"
              x:Class="Source.Presentation.Pages.Category.ListCategoryPage">
     <ContentPage.Content>
+          <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <StackLayout>
+       <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Vertical">
+        <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+         <StackLayout.Margin>
+           <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="10,50,10,0" />
+                <On Platform="Android" Value="5,10,5,0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+      </StackLayout.Margin>
+
+            <StackLayout Padding="10" Margin="0,0,0,0">
+            <Frame Padding="1" CornerRadius="5">
+            <customrenders:CustomSearchBar
+                Placeholder="Looking for something?"
+                PlaceholderColor="#F5C5B7"   Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}" TextColor="{StaticResource AppColor}"></customrenders:CustomSearchBar>
+            </Frame>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsVibleCategoryStackLayout}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+            <Image Source="Logo"></Image>
+            <Label Margin="20,0,20,0" TextColor="#F5C5B7" Text="Currently no category available please add new categories"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>              </StackLayout>
+
+         <StackLayout BackgroundColor="Transparent" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
+                      Padding="5" IsVisible="{Binding IsVibleListviewCategoryStackLayout}" >
+
+             <ListView  VerticalOptions="FillAndExpand" BackgroundColor="Transparent"
+                     IsEnabled="True" x:Name="listview" 
+                     SeparatorVisibility="None" CachingStrategy="RecycleElement"
+                     ItemsSource="{Binding ListofCategory}" SelectedItem="{Binding selectedItem,Mode=TwoWay}" 
+                     HasUnevenRows="True" VerticalScrollBarVisibility="Never">
+
+           <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+           <StackLayout Padding="0" Margin="1,5,1,5" BackgroundColor="White">
+       
+             <Frame HasShadow="True" 
+              Padding="10,10,10,10" 
+              BackgroundColor="White"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand">
+
+               <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                   
+                      <StackLayout Orientation="Horizontal"
+                                      VerticalOptions="FillAndExpand" 
+                                      HorizontalOptions="FillAndExpand">
+                             <StackLayout Orientation="Vertical">
+                                      <Label Text="{Binding Category}" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Start"/>
+                                       <Label Text="{Binding TotalCount}"  TextColor="#F5C5B7" VerticalTextAlignment="Start"
+                                        FontSize="Body" >
+                                       <Label.Triggers>
+                                 <DataTrigger Binding="{Binding TotalCount}"
+                                 TargetType="Label"
+                                 Value="2">
+                                 <Setter Property="IsVisible" Value="true"/>
+                                 </DataTrigger>
+                                    
+                                 <DataTrigger Binding="{Binding TotalCount}"
+                                 TargetType="Label"
+                                 Value="0">
+                                 <Setter Property="IsVisible" Value="false"/>
+                                 </DataTrigger>
+                                 </Label.Triggers>
+                                 </Label>
+                            </StackLayout>
+                                                                    
+                        <Image VerticalOptions="CenterAndExpand" Source="arrow"
+                                     HorizontalOptions="EndAndExpand"
+                                     HeightRequest="20" WidthRequest="20">
+                                 <Image.Triggers>
+                                 <DataTrigger Binding="{Binding TotalCount}"
+                                 TargetType="Image"
+                                 Value="0">
+                                 <Setter Property="IsVisible" Value="true"/>
+                                 </DataTrigger>
+                                                  
+                       <DataTrigger  Binding="{Binding TotalCount}"
+                                 TargetType="Image"
+                                 Value="">
+                                 <Setter Property="IsVisible" Value="false"/>
+                       </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                          </StackLayout>
+                     </StackLayout>
+                      </Frame>
+                    </StackLayout>
+                    </ViewCell>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+          </ListView>
+
+         </StackLayout>
+
+                         <StackLayout Orientation="Horizontal">
+               <Frame Padding="0" HasShadow="False" CornerRadius="5"
+               BackgroundColor="{StaticResource AppColor}" Margin="10,0,10,0" VerticalOptions="EndAndExpand"
+                          HorizontalOptions="FillAndExpand">
+          <StackLayout >
+          <Button Text="Create category" TextColor="White"
+                  BackgroundColor="Transparent" Command="{Binding AddCategoryCommand}"></Button>
+          </StackLayout>
+          </Frame>
+              </StackLayout>
+           </StackLayout>
+           </StackLayout>
+           </Grid>
+          </StackLayout>
+          </StackLayout>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
