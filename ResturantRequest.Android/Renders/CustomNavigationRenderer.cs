@@ -1,12 +1,12 @@
 ﻿using System;
 using Android.Content;
 using MLM.Droid.Renders;
-using Source.Custom;
+
 using AView = Android.Views.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
-
+using Source.Presentation.CommonView;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationRenderer))]
 namespace MLM.Droid.Renders
