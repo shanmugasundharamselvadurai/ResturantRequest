@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="WhiteSmoke"
+             xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             x:Class="Source.Presentation.Pages.Product.ProductDetailListPage">
+  <ContentPage.Content> 
+         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,10,5,10" Padding="0"
+          BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+       <StackLayout>
+
+               <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+                
+             <Label Text="Edit product" FontSize="Large" TextColor="#d83737"   VerticalOptions="Start"
+             HorizontalOptions="Start"></Label>
+
+                     <Image Source="close" WidthRequest="35" HeightRequest="35"
+             VerticalOptions="EndAndExpand"
+             HorizontalOptions="EndAndExpand">
+               <Image.GestureRecognizers>
+                   <TapGestureRecognizer Command="{Binding DismissCommand }" />
+               </Image.GestureRecognizers>
+            </Image>
+            </StackLayout>
+
+
+        <StackLayout  VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand">
+
+        
+       
+          <StackLayout Margin="10,10,10,10">
+
+            <Label Text="Name" TextColor="{StaticResource AppColor}" FontSize="Medium"></Label>
+            <customrenders:CustomEntry Text="{Binding NameText}" TextColor="Black"
+                                       BackgroundColor="White" HeightRequest="45"></customrenders:CustomEntry>
+
+            <Label Text="Description" TextColor="{StaticResource AppColor}" FontSize="Medium"></Label>
+            <customrenders:CustomEditor Text="{Binding DescriptionText}"
+                                        TextColor="Black" BackgroundColor="White"
+                                        HeightRequest="100"></customrenders:CustomEditor>
+
+            <Label Text="Category" TextColor="{StaticResource AppColor}"  FontSize="Medium"  />
+           
+            <Frame Padding="0" HasShadow="False" CornerRadius="2"
+                   BackgroundColor="White"  VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="FillAndExpand">
+           <StackLayout>
+           <customrenders:CustomPicker Margin="5,0,5,0" BackgroundColor="White" 
+                             TextColor="Black" Title="{Binding categorySelectedValue}"
+                                     SelectedItem="{Binding SelectedItem,Mode=TwoWay}" 
+                             ItemsSource="{Binding ListofCategory,Mode=TwoWay}" 
+                             ItemDisplayBinding="{Binding Category,Mode=TwoWay}" 
+                             TitleColor="Black">
+         </customrenders:CustomPicker>
+         </StackLayout>
+         </Frame>
+
+         <Label Text="Price" TextColor="{StaticResource AppColor}" FontSize="Medium"></Label>
+         <customrenders:CustomEntry Text="{Binding PriceText}"  TextColor="Black" BackgroundColor="White" HeightRequest="45"></customrenders:CustomEntry>
+         </StackLayout>
+                        <Frame Padding="0" HasShadow="False" CornerRadius="5"
+                   BackgroundColor="{StaticResource AppColor}" Margin="50,10,50,0" VerticalOptions="EndAndExpand"
+                          HorizontalOptions="FillAndExpand">
+          <StackLayout >
+          <Button Text="Update" TextColor="White"
+                  BackgroundColor="Transparent" Command="{Binding UpdateProductCommand}"></Button>
+          </StackLayout>
+          </Frame>
+
+         </StackLayout>
+    
+           </StackLayout>
+    </Grid>
+    </ContentPage.Content>
+</ContentPage>
