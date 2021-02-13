@@ -25,13 +25,20 @@
             </OnPlatform.Platforms>
         </OnPlatform>
      </StackLayout.Padding>
-            
-                <Image Source="close" HeightRequest="30" WidthRequest="30" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+              <Label Text="List of product" FontSize="Large" TextColor="#d83737"   VerticalOptions="Start"
+             HorizontalOptions="Start"></Label>
+
+                     <Image Source="close" WidthRequest="35" HeightRequest="35"
+             VerticalOptions="EndAndExpand"
+             HorizontalOptions="EndAndExpand">
                       <Image.GestureRecognizers>
                    <TapGestureRecognizer Command="{Binding backbuttonAction }"/>
                  </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
+           </StackLayout>
     <StackLayout>
        <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand">
 
@@ -55,10 +62,10 @@
                      ItemsSource="{Binding SelectedCategory}" SelectedItem="{Binding selectedItem,Mode=TwoWay}" 
                      HasUnevenRows="True" VerticalScrollBarVisibility="Never">
 
-           <ListView.ItemTemplate>
+             <ListView.ItemTemplate>
                   <DataTemplate>
                     <ViewCell>
-           <StackLayout Padding="0" Margin="1,5,1,5" BackgroundColor="White">
+                 <StackLayout Padding="0" Margin="1,5,1,5" BackgroundColor="White">
        
              <Frame HasShadow="True" 
               Padding="10,10,10,10" 
@@ -73,9 +80,12 @@
                                       VerticalOptions="FillAndExpand" 
                                       HorizontalOptions="Start">
                 
-                             <StackLayout Orientation="Vertical">
-                                      <Label Text="{Binding ProductName}"
-                                             TextColor="Black" VerticalTextAlignment="Start"
+                             <StackLayout Orientation="Horizontal">
+                                      <Image Source="plate2" HeightRequest="50" WidthRequest="50"
+                                             VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+
+                                    <Label Text="{Binding ProductName}"
+                                             TextColor="Black" VerticalTextAlignment="Center"
                                         FontSize="Body" />
                             </StackLayout>
                           </StackLayout>

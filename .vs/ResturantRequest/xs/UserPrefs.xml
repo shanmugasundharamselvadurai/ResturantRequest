@@ -1,0 +1,70 @@
+﻿<Properties StartupConfiguration="{2208FFDC-2B82-4E7F-A3FD-AE7034B5F140}|Default">
+  <MonoDevelop.Ide.ItemProperties.ResturantRequest.Android AndroidDesignerPreferredTheme="MainTheme" Xamarin.HotReload.UnhandledDeviceException.ResturantRequest.Android.HideInfoBar="True" TriggeredFromHotReload="False" PreferredExecutionTarget="Android.340123c4c10a16cb" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ResturantRequest/Source/Presentation/Pages/BottomTab/BottomTabbedPage.xaml.cs">
+    <Files>
+      <File FileName="ResturantRequest.Android/Resources/values/colors.xml" Line="10" Column="1" />
+      <File FileName="ResturantRequest.Android/Resources/values/styles.xml" />
+      <File FileName="ResturantRequest.Android/Resources/Resource.designer.cs" />
+      <File FileName="ResturantRequest.Android/Resources/AboutResources.txt" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Category/ListCategoryPage.xaml" Line="42" Column="141" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Category/ListCategoryPage.xaml.cs" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Category/ListDetailCategoryPage.xaml.cs" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Category/ListDetailCategoryPage.xaml" />
+      <File FileName="ResturantRequest/Source/Data/PageViewModel/ListDetailCategoryPageModel.cs" />
+      <File FileName="ResturantRequest/Source/Data/PageViewModel/CategoryPageModel.cs" />
+      <File FileName="ResturantRequest/App.xaml" />
+      <File FileName="ResturantRequest/Source/Data/PageViewModel/CategoryAddViewModel.cs" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Product/ProductListPage.xaml" Line="45" Column="43" />
+      <File FileName="../../.nuget/packages/com.airbnb.xamarin.forms.lottie/4.0.8/readme.txt" />
+      <File FileName="../../.nuget/packages/com.airbnb.xamarin.forms.lottie/4.0.4/readme.txt" />
+      <File FileName="../../.nuget/packages/com.airbnb.xamarin.forms.lottie/3.0.4/readme.txt" />
+      <File FileName="ResturantRequest.Android/MainActivity.cs" Line="23" Column="1" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/Product/ProductListPage.xaml.cs" Line="13" Column="57" />
+      <File FileName="ResturantRequest/Source/Data/PageViewModel/ProductListPageModel.cs" Line="121" Column="36" />
+      <File FileName="ResturantRequest/Source/Presentation/Pages/BottomTab/BottomTabbedPage.xaml.cs" Line="31" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ResturantRequest" expanded="True">
+            <Node name="ResturantRequest" expanded="True">
+              <Node name="Source" expanded="True">
+                <Node name="Presentation" expanded="True">
+                  <Node name="Pages" expanded="True">
+                    <Node name="BottomTab" expanded="True">
+                      <Node name="BottomTabbedPage.xaml" expanded="True">
+                        <Node name="BottomTabbedPage.xaml.cs" selected="True" />
+                      </Node>
+                    </Node>
+                    <Node name="Category" expanded="True">
+                      <Node name="ListCategoryPage.xaml" expanded="True" />
+                    </Node>
+                    <Node name="Product" expanded="True">
+                      <Node name="ProductListPage.xaml" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node name="ResturantRequest.Android" expanded="True">
+              <Node name="Renders" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="drawable" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>ResturantRequest.iOS/ResturantRequest.iOS.csproj</String>
+    <String>ResturantRequest.UITests/ResturantRequest.UITests.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

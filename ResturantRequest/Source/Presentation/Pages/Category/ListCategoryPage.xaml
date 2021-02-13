@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              BackgroundColor="WhiteSmoke"
              NavigationPage.HasNavigationBar="False"
              x:Class="Source.Presentation.Pages.Category.ListCategoryPage">
@@ -30,6 +30,8 @@
       </StackLayout.Margin>
 
             <StackLayout Padding="10" Margin="0,0,0,0">
+              <Label Text="Category List" HorizontalOptions="Start"
+                  FontSize="Large" Margin="0,0,0,10" TextColor="#d83737"></Label>
             <Frame Padding="1" CornerRadius="5">
             <customrenders:CustomSearchBar
                 Placeholder="Looking for something?"
@@ -38,16 +40,19 @@
             </StackLayout>
 
             <StackLayout IsVisible="{Binding IsVibleCategoryStackLayout}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
-            <Image Source="Logo"></Image>
-            <Label Margin="20,0,20,0" TextColor="#F5C5B7" Text="Currently no category available please add new categories"
+               <ff:CachedImage Source="carousel.gif">
+                <ff:CachedImage.Transformations>  
+                    <ffTransformations:RoundedTransformation Radius="240"/>  
+                </ff:CachedImage.Transformations>  
+                </ff:CachedImage>
+            <Label Margin="20,0,20,50" TextColor="#F5C5B7" Text="No category available"
                        FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>              </StackLayout>
 
          <StackLayout BackgroundColor="Transparent" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
                       Padding="5" IsVisible="{Binding IsVibleListviewCategoryStackLayout}" >
 
              <ListView  VerticalOptions="FillAndExpand" BackgroundColor="Transparent"
-                     IsEnabled="True" x:Name="listview" 
+                     IsEnabled="True" x:Name="listdview" 
                      SeparatorVisibility="None" CachingStrategy="RecycleElement"
                      ItemsSource="{Binding ListofCategory}" SelectedItem="{Binding selectedItem,Mode=TwoWay}" 
                      HasUnevenRows="True" VerticalScrollBarVisibility="Never">
@@ -55,6 +60,11 @@
            <ListView.ItemTemplate>
                   <DataTemplate>
                     <ViewCell>
+            <ViewCell.ContextActions>
+            <MenuItem Command="{Binding Path=BindingContext.DelectCategorySelectedItemCommand,Source={x:Reference listdview}}"
+                      CommandParameter="{Binding .}"
+                      Text="Delete" IsDestructive="True" />
+         </ViewCell.ContextActions>
            <StackLayout Padding="0" Margin="1,5,1,5" BackgroundColor="White">
        
              <Frame HasShadow="True" 
@@ -68,11 +78,18 @@
                       <StackLayout Orientation="Horizontal"
                                       VerticalOptions="FillAndExpand" 
                                       HorizontalOptions="FillAndExpand">
-                             <StackLayout Orientation="Vertical">
+                             <StackLayout Orientation="Horizontal" >
+
+                               <Image Source="plate2" HeightRequest="50" WidthRequest="50"
+                                         VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                                 <StackLayout>
+
+                            
                                       <Label Text="{Binding Category}" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Start"/>
                                        <Label Text="{Binding TotalCount}"  TextColor="#F5C5B7" VerticalTextAlignment="Start"
                                         FontSize="Body" >
                                        <Label.Triggers>
+
                                  <DataTrigger Binding="{Binding TotalCount}"
                                  TargetType="Label"
                                  Value="2">
@@ -86,6 +103,7 @@
                                  </DataTrigger>
                                  </Label.Triggers>
                                  </Label>
+                            </StackLayout>
                             </StackLayout>
                                                                     
                         <Image VerticalOptions="CenterAndExpand" Source="arrow"
@@ -116,15 +134,16 @@
 
          </StackLayout>
 
-                         <StackLayout Orientation="Horizontal">
+               <StackLayout Orientation="Horizontal">
                <Frame Padding="0" HasShadow="False" CornerRadius="5"
-               BackgroundColor="{StaticResource AppColor}" Margin="10,0,10,0" VerticalOptions="EndAndExpand"
+               BackgroundColor="{StaticResource AppColor}" Margin="50,0,50,0" VerticalOptions="EndAndExpand"
                           HorizontalOptions="FillAndExpand">
           <StackLayout >
           <Button Text="Create category" TextColor="White"
                   BackgroundColor="Transparent" Command="{Binding AddCategoryCommand}"></Button>
           </StackLayout>
           </Frame>
+
               </StackLayout>
            </StackLayout>
            </StackLayout>

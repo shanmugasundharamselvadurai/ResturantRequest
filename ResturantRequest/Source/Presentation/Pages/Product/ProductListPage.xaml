@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customrenders="clr-namespace:Source.Presentation.CustomRenders"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              BackgroundColor="WhiteSmoke" NavigationPage.HasNavigationBar="False"
           
              x:Class="Source.Presentation.Pages.Product.ProductListPage">
@@ -29,21 +31,29 @@
       </StackLayout.Margin>
 
             <StackLayout Padding="10" Margin="0,0,0,0">
+                <Label Text="Product List" HorizontalOptions="Start"
+                       FontSize="Large" Margin="0,0,0,10" TextColor="#d83737"></Label>
             <Frame Padding="1" CornerRadius="5">
             <customrenders:CustomSearchBar
                 Placeholder="Looking for something?"
-                PlaceholderColor="#F5C5B7"   Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}" TextColor="{StaticResource AppColor}"></customrenders:CustomSearchBar>
+                PlaceholderColor="#F5C5B7" Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}" TextColor="{StaticResource AppColor}"></customrenders:CustomSearchBar>
             </Frame>
             </StackLayout>
 
-            <StackLayout IsVisible="{Binding IsVibleCategoryStackLayout}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout IsVisible="{Binding IsVibleCategoryStackLayout}" VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+             <ff:CachedImage Source="table.gif">
+                <ff:CachedImage.Transformations>  
+                    <ffTransformations:RoundedTransformation Radius="240" />  
+                </ff:CachedImage.Transformations>  
+                </ff:CachedImage>
 
-                <Image Source="Logo"></Image>
-                <Label Margin="20,0,20,0" TextColor="#F5C5B7" Text="Currently no category available please add new categories"
+                <Label Margin="20,0,20,50" TextColor="#F5C5B7" Text=" No product available"
                        FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>
                 </StackLayout>
-                <StackLayout BackgroundColor="Transparent" Padding="5" IsVisible="{Binding IsVibleListviewCategoryStackLayout}" >
-          <ListView  VerticalOptions="FillAndExpand" BackgroundColor="Transparent"
+                <StackLayout BackgroundColor="Transparent" Padding="5"
+                             IsVisible="{Binding IsVibleListviewCategoryStackLayout}" >
+                <ListView VerticalOptions="FillAndExpand" BackgroundColor="Transparent"
                      IsEnabled="True" x:Name="listview" 
                      SeparatorVisibility="None" CachingStrategy="RecycleElement"
                      ItemsSource="{Binding SaveProducts }" SelectedItem="{Binding SelectedItem,Mode=TwoWay}" 
@@ -68,42 +78,46 @@
                   <StackLayout Orientation="Horizontal"
                                       VerticalOptions="FillAndExpand" 
                                       HorizontalOptions="FillAndExpand">
-                                      <Image Source="{Binding Image}"  VerticalOptions="Start" 
+                                      <Image Source="{Binding Image}"  VerticalOptions="Center" 
                                       HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"></Image>
 
-                   <StackLayout Orientation="Vertical">
-                      <Label Text="{Binding ProductName}" TextColor="Black" VerticalTextAlignment="Start"
-                                      FontSize="Body" />
-                                      <Label Text="{Binding Description}"
-                                             TextColor="Gray" VerticalTextAlignment="Start"   />
-                                  <Label Text="{Binding price}" TextColor="Black" VerticalTextAlignment="Start"/>
-                            </StackLayout>
-                             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
-                             <Label Text="{Binding Category}" TextColor="Black" 
-                                          VerticalOptions="End" 
-                                      HorizontalOptions="End"/>
-                                </StackLayout>
-              
-                        <Image Source="arrow"   VerticalOptions="Center" 
+                   <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                       <Label Text="{Binding ProductName}" FontSize="Medium"  TextColor="{StaticResource AppColor}"></Label>
+                       <Label Text="{Binding Description}"  TextColor="Gray"   />
+
+                      <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding price}" TextColor="Black"
+                                   VerticalOptions="StartAndExpand" 
+                                   HorizontalOptions="FillAndExpand"/>
+
+                            <Label Text="{Binding Category}" TextColor="Black" VerticalOptions="End" 
+                                      HorizontalOptions="EndAndExpand"/>
+                      </StackLayout>
+                      </StackLayout>
+                      <Image Source="arrow"   VerticalOptions="Center" 
                                       HorizontalOptions="Center"
                                     HeightRequest="20" WidthRequest="20"></Image>
-                          </StackLayout>
+
+
                      </StackLayout>
-                      </Frame>
+                     </StackLayout>
+                     </Frame>
                     </StackLayout>
                     </ViewCell>
                   </DataTemplate>
               </ListView.ItemTemplate>
           </ListView>
          </StackLayout>
-                   <Frame Padding="0" HasShadow="False" CornerRadius="5"
-                   BackgroundColor="{StaticResource AppColor}" Margin="50,0,50,0" VerticalOptions="EndAndExpand"
-                          HorizontalOptions="FillAndExpand">
+                        <Frame Padding="0" HasShadow="False" CornerRadius="5"
+                          VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
+                   BackgroundColor="{StaticResource AppColor}" Margin="50,0,50,0">
           <StackLayout >
           <Button Text="Create Product" TextColor="White"
                   BackgroundColor="Transparent" Command="{Binding AddCategoryCommand}"></Button>
           </StackLayout>
           </Frame>
+           
            </StackLayout>
            </StackLayout>
            </Grid>

@@ -19,7 +19,6 @@ namespace Source.Presentation.Pages.BottomTab
             InitializeComponent();
 
             this.CurrentPageChanged += PageChanged;
-
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             On<Android>().SetIsSwipePagingEnabled(false);
         }
@@ -32,15 +31,11 @@ namespace Source.Presentation.Pages.BottomTab
             if (Title.ToLower().Equals("product"))
             {
                 MessagingCenter.Send<BottomTabbedPage>(this, "product");
-
-            
             }
             else if (Title.ToLower().Equals("category"))
             {
                 MessagingCenter.Send<BottomTabbedPage>(this, "category");
             }
-  
-        }
-
+         }
     }
 }

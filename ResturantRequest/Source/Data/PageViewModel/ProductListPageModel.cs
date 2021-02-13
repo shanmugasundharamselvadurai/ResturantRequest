@@ -71,6 +71,7 @@ namespace Source.Data.PageViewModel
             {
                 //Error
             }
+            callData();
         });
 
         private void SearchCommandExecute()
@@ -116,7 +117,7 @@ namespace Source.Data.PageViewModel
                         ProductName = sValue.ProductName,
                         Image = sValue.Image,
                         Description = sValue.Description,
-                        price = sValue.price,
+                        price = "$ "+sValue.price,
                         Category = sValue.Category
                     });
                 }

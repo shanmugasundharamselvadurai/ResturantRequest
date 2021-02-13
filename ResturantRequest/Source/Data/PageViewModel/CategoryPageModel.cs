@@ -58,7 +58,7 @@ namespace Source.Data.PageViewModel
                     if (x == 1)
                     {
                         // success message
-                        Callrefresh();
+      
                     }
                     else
                     {
@@ -70,6 +70,7 @@ namespace Source.Data.PageViewModel
                 {
 
                 }
+                Callrefresh();
             });
         }
 
@@ -77,7 +78,7 @@ namespace Source.Data.PageViewModel
         {
             _listofCategory.Clear();
 
-            var categoryDetails = (from x in conn.Table<ResturantCategory>() select x).ToList();
+            var categoryDetails = (from x in conn.Table<ResturantCategory>() select x).Distinct().ToList();
 
             if (categoryDetails != null && categoryDetails.Count != 0)
             {
@@ -98,11 +99,12 @@ namespace Source.Data.PageViewModel
                  else
                  {
                         totalCountValue = "";
-                    }
+                 }
 
                 _listofCategory.Add(new ResturantCategory
                  {
                    Category = value.Category,
+                   ID = value.ID,
                    TotalCount =  totalCountValue.ToString(),
                 });
                }
@@ -144,6 +146,40 @@ namespace Source.Data.PageViewModel
              await PopupNavigation.Instance.PushAsync(new CategoryAddView());
         });
 
+        public Command DelectCategorySelectedItemCommand => new Command<ResturantCategory>((ListofCategory) =>
+        {
+            var selecetDelectedItem = ListofCategory;
+            if (string.IsNullOrEmpty(selecetDelectedItem.TotalCount))
+            {
+                // Remove
+                _listofCategory.Remove(ListofCategory);
+                int xd = 0;
+                try
+                {
+                    xd = conn.Delete(selecetDelectedItem);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                if (xd == 1)
+                {
+                    Application.Current.MainPage.DisplayAlert("Alert", "Category delected", "Ok");
+                    //Success
+                    Callrefresh();
+                }
+                else
+                {
+                   
+                }
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Warning", "Please assign this product to another category before deleting.", "Ok");
+                return;
+            }
+           });
 
         private ObservableCollection<ResturantCategory> _listofCategory;
         public ObservableCollection<ResturantCategory> ListofCategory
